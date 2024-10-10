@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cetak Bukti Dukung SPJ Keuangan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+ /* Style umum */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 0 0 5px 0; padding: 0; font-size: 24px; line-height: 1.2;
+}
+
+
+h3 {
+    margin: 0; padding: 0; font-size: 16px; line-height: 1.2;
+}
+table {border-bottom : 5px solid #000; padding: 2px;}
+
+/* Logo responsif */
+.logo {
+    width: 90px;
+    height: auto;
+    margin-right: 0;
+    border-radius: 50%;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    padding: 5px;
+    border: 1px solid #224551;
+    border-radius: 5px;
+    margin-right: 10px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.back-button {
+    background-color: #224551;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    flex-shrink: 0;
+
+}
+
+/* Section dan tombol responsif */
+.section {
+    margin: 20px 0;
+    border: 1px solid #224551;
+    padding: 15px;
+}
+
+.toggle-btn {
+    background-color: #224551;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-size: 17px;
+}
+
+.details {
+    display: none;
+    padding-left: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.check-icon {
+    margin-right: 10px;
+    display: none;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #224551;
+    border-radius: 4px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.print-btn {
+    margin-top: 10px;
+    background-color: #007BFF;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.signature-line {
+    border-top: 1px dashed black;
+    width: 200px;
+    margin: 80px auto;
+}
+
+.notes-input {
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #224551;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Media Query */
+@media (max-width: 768px) {
+    .logo {
+        width: 60px;
+    }
+
+    .search-container {
+        flex-direction: column;
+    }
+
+    .search-input, .back-button {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .toggle-btn {
+        font-size: 16px;
+    }
+
+    .print-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 50px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+
+    .toggle-btn {
+        font-size: 14px;
+    }
+
+    .print-btn {
+        font-size: 14px;
+    }
+
+    .notes-input {
+        font-size: 14px;
+    }
+}
+
+
+        .checked .checkbox {
+            display: none; 
+        }
+
+        .checked .check-icon {
+            display: block; 
+            color: green;
+        }
+
+        .print-btn {
+            margin-top: 10px;
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .footer {
+            position: absolute;
+            right: 20px;
+            bottom: 100px; /* Menyisakan ruang untuk garis putus-putus */
+            text-align: right;
+            font-size: 14px;
+            
+        }
+
+        .signature-line {
+            border-top: 1px dashed black; /* Garis putus-putus */
+            margin: 80px 0; /* Jarak untuk tanda tangan */
+            width: 200px; /* Lebar garis */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .notes-input {
+            width: 100%; /* Lebar input catatan */
+            margin-top: 10px; /* Jarak antara tombol dan input */
+            padding: 5px;
+            border: 1px solid #224551;
+            border-radius: 5px;
+            font-size: 16px; /* Meningkatkan ukuran font untuk input catatan */
+        }
+
+        .toggle-btn:hover {
+            background-color: rgb(38, 44, 155);
+        }
+
+        .print-btn:hover {
+            background-color: rgb(40, 71, 207);
+        }
+        .small-text {
+          font-size: 15px; /* Adjust the font size as needed */
+            }
+        .back-button:hover {
+            background-color: rgb(40, 71, 207);
+        }
+        .footer1{
+            text-align: center;
+            padding: 0px;
+            font-size: 0.9em;
+            color: #777;
+            background-color:aliceblue;
+        }
+
+        @media print {
+             @page {
+                size: 58mm auto; /* Set page width to 58mm */
+                margin: 0 0; /* Set top and bottom margins to 10mm, left and right margins to 0 */
+            }
+
+            /* Body styles for centering content */
+            body {
+                width: 58mm; /* Set body width to match page size */
+                margin: 0 auto; /* Center the body */
+                padding: 0 5mm; /* Add padding to the left and right to ensure content doesn't touch edges */
+            }
+
+
+            /* Tombol toggle (contoh) */
+            .toggle-btn {
+                background-color: #224551 !important; /* Menggunakan !important agar diterapkan saat cetak */
+                color: white !important; /* Menggunakan !important agar diterapkan saat cetak */
+                -webkit-print-color-adjust: exact; /* Memaksa browser untuk mencetak warna */
+                print-color-adjust: exact; /* Untuk browser modern */
+            }
+
+            /* Mengatur ukuran konten agar sesuai dengan kertas thermal */
+            body {
+                width: 58mm;
+                font-size: 6px; /* Menyesuaikan ukuran teks agar sesuai dengan kertas thermal */
+                margin: 0%; /* Menyesuaikan margin */
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            h1 {
+                font-size: 12px;
+                
+            }
+            h3 {
+                font-size: 8px;
+            }
+
+
+            .container {
+                width: 100%; /* Menggunakan seluruh lebar halaman */
+            }
+
+            header, .section, .footer {
+                padding: 5px; /* Mengurangi padding untuk menyesuaikan konten */
+            }
+
+            /* Memperkecil logo */
+            .logo {
+                width: 40px; /* Atur ukuran logo sesuai kebutuhan */
+                margin-bottom: 2px;
+                margin-top: 0%;
+                border-radius: 50%;
+                
+            }
+
+            /* Sembunyikan tombol print saat mencetak */
+            .print-btn {
+                display: none;
+            }
+
+            /* Menyembunyikan input catatan saat dicetak */
+            .notes-input {
+                display: none;
+            }
+            
+
+            /* Menampilkan catatan dalam cetakan */
+            .print-notes {
+                font-size: 80px; /* Meningkatkan ukuran font untuk catatan */
+                margin-top: 10px; /* Jarak atas untuk catatan cetakan */
+            }
+            .toggle-btn {
+                font-size: 15px;
+            }
+            .details {
+           font-size: 13px;
+           display: block;
+        }
+            .small-text {
+            font-size: 14px; /* Adjust the font size as needed */
+            
+        }
+        .print-btn, .search-container, .back-button {
+                display: none !important;
+            }
+        }
+        
+        
+    </style>
+    <script>
+        function toggleDetails(sectionId) {
+            var details = document.getElementById('details-' + sectionId);
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+        }
+        function printSection(sectionId) {
+    var originalContent = document.body.innerHTML; // Simpan konten asli
+    var headerContent = document.querySelector('header').outerHTML; 
+    var sectionContent = document.getElementById('section-' + sectionId).outerHTML; 
+    var notesContent = document.getElementById('notes-' + sectionId).value; // Ambil catatan
+
+    // Siapkan tanggal saat ini
+    var printDate = new Date().toLocaleDateString('id-ID', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    // Siapkan konten untuk dicetak
+    var printContent = `
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+            }
+            .print-container {
+                margin: 0;
+            }
+            .footer {
+                margin-top: 30px;
+                text-align: left; /* Rata kiri untuk footer */
+            }
+            .signature-line {
+                border-top: 1px solid black;
+                width: 200px;
+                margin-top: 100px;
+            }
+            ul {
+                list-style-type: none; /* Hilangkan bullet list */
+                padding-left: 0;
+                margin-left: 0; /* Agar lebih rapat ke kiri */
+            }
+            li {
+                display: flex;
+                align-items: flex-start; /* Pastikan checkbox tetap di atas */
+                margin-bottom: 10px;
+            }
+            .checkbox {
+                width: 16px;
+                height: 16px;
+                border: 1px solid black;
+                margin-right: 10px;
+                flex-shrink: 0; /* Agar checkbox tidak mengecil */
+            }
+            .check-icon {
+                display: none; /* Sembunyikan icon saat dicetak, jika diperlukan */
+            }
+            .small-text {
+                margin-left: 0; /* Pastikan teks dimulai di sebelah kiri */
+                font-size: 14px;
+                word-wrap: break-word; /* Agar teks panjang membungkus */
+            }
+        </style>
+        <div class="print-container">
+            ${headerContent}
+            ${sectionContent.replace(/<textarea[^>]*>[^<]*<\/textarea>/, '<div>Catatan: ' + notesContent + '</div>')} 
+            <div class="footer">
+                <div>Sleman, ${printDate}</div>
+                <div class="signature-line"></div> 
+            </div>
+        </div>
+    `;
+
+    // Ganti konten dengan yang siap dicetak
+    document.body.innerHTML = printContent;
+
+    // Cetak
+    window.print();
+
+    // Kembalikan konten asli setelah print atau jika dibatalkan
+    document.body.innerHTML = originalContent;
+
+    // Mengembalikan nilai catatan yang sebelumnya dimasukkan
+    document.getElementById('notes-' + sectionId).value = notesContent;
+}
+
+
+        function goBack() {
+            window.location.href = "index.html";
+        }
+        function searchSection() {
+            var input = document.querySelector('.search-input').value.toLowerCase();
+            var sections = document.querySelectorAll('.toggle-btn');
+
+            sections.forEach(function(section) {
+                var text = section.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    section.parentElement.style.display = '';
+                } else {
+                    section.parentElement.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+        <div class="container">
+            <header>
+                <table width="100%" style="border-collapse: collapse;">
+                    <tr>
+                        <!-- Kolom logo -->
+                        <td style="width: 1px; vertical-align: top; padding: 0;">
+                            <img src="https://ugc.production.linktr.ee/qXumatCIRPWhNkJwdiqS_3ZRru8rXD01rOB17?io=true&size=avatar-v3_0" alt="Logo BPBD" class="logo" >
+                        </td>
+                        <td style="vertical-align: center; padding: 0; margin: 10px;">
+                            <h1>BUKTI DUKUNG SPJ KEUANGAN</h1>
+                            <h3>PERBUP SLEMAN NOMOR 27 TH.2024</h3>
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+            </header>        
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Cari Bagian..." onkeyup="searchSection()" />
+            <button class="back-button" onclick="goBack()">Kembali</button>
+        </div>
+
+        <div class="section" id="section-1">
+            <button class="toggle-btn" onclick="toggleDetails(1)">1. Gaji dan Tunjangan Aparatur Sipil Negara</button>
+            <div class="details" id="details-1">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Fotokopi SP2D gaji, bukti transfer.
+                    </li>
+                </ul>
+                <textarea id="notes-1" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(1)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-2">
+            <button class="toggle-btn" onclick="toggleDetails(2)">2. Premi Asuransi</button>
+            <div class="details" id="details-2">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Bukti pembayaran premi asuransi.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Tagihan.
+                    </li>
+                </ul>
+                <textarea id="notes-2" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(2)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-3">
+            <button class="toggle-btn" onclick="toggleDetails(3)">3. Kompensasi Jabatan dan Kompensasi Kerja</button>
+            <div class="details" id="details-3">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Daftar penerimaan atau bukti transfer.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Surat keputusan tim/penujukan/surat tugas pada saat pembayaran pertama.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Jika ada perubahan personil tim disertakan surat keputusan tim baru.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4. Jika di surat keputusan tim tidak menyebutkan nama disertakan surat tugas.
+                    </li>
+                </ul>
+                <textarea id="notes-3" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(3)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-4">
+            <button class="toggle-btn" onclick="toggleDetails(4)">4. Belanja Jasa Lainnya Orang Perorangan (Kontrak Perorangan) dan Jasa Outsourcing</button>
+            <div class="details" id="details-4">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Daftar penerimaan atau bukti transfer.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Surat perintah kerja/surat keputusan pengangkatan/surat tugas.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Daftar hadir/tagihan.
+                    </li>
+                </ul>
+                <textarea id="notes-4" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(4)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-5">
+            <button class="toggle-btn" onclick="toggleDetails(5)">5. Uang Lembur</button>
+            <div class="details" id="details-5">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Daftar penerimaan/bukti transfer.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Surat tugas.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Daftar hadir.
+                    </li>
+                </ul>
+                <textarea id="notes-5" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(5)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-6">
+            <button class="toggle-btn" onclick="toggleDetails(6)">6. Hibah Uang dan Bantuan Sosial Terencana</button>
+            <div class="details" id="details-6">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Fotokopi SP2D.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2.Keputusan Bupati tentang penerima hibah/bantuan sosial.
+                    </li>
+                </ul>
+                <textarea id="notes-6" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(6)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-7">
+            <button class="toggle-btn" onclick="toggleDetails(7)">7. Bantuan Sosial Uang yang Tidak Dapat Direncanakan Sebelumnya</button>
+            <div class="details" id="details-7">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Fotokopi SP2D.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Persetujuan Sekretaris Daerah.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Rencana kebutuhan belanja.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4. Pembayaran tunai dilampiri kuitansi atau daftar penerimaan yang ditandatangani oleh penerima
+                        dan dibubuhi cap bagi penerima yang bukan perorangan.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        5. Pembayaran melalui bank dilampiri dengan bukti transfer yang diotorisasi bank atau daftar
+                        pemindah bukuan yang diotorisasi bank.
+                    </li>
+                </ul>
+                <textarea id="notes-7" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(7)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-8">
+            <button class="toggle-btn" onclick="toggleDetails(8)">8. Hibah/Bantuan Sosial Barang</button>
+            <div class="details" id="details-8">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Nota.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Kuitansi.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Berita acara pemeriksaan/penerimaan.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4. Surat pesanan dan bukti pembayaran (nota atau kuitansi atau bukti transfer atau SP2D).
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        5. Fotokopi SP2D.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        6. Berita Acara Serah Terima
+                    </li>
+                </ul>
+                <textarea id="notes-8" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(8)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-9">
+            <button class="toggle-btn" onclick="toggleDetails(9)">9.Belanja tanggap darurat penanggulangan bencana alam dan/atau bencana sosial</button>
+            <div class="details" id="details-9">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1) Surat keputusan tanggap darurat
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2) Surat keputusan pengeluaran dana tidak terduga
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3) Surat permohonan SKPD
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4) Rencana kebutuhan belanja
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        5) Buku kas umum
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        6) Laporan penggunaan dana tak terduga ditandatangani dan cap SKPD
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        7) Bukti pengeluaran yang sah
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        8) Fotokopi SP2D
+                    </li>
+                </ul>
+                <textarea id="notes-9" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(9)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-10">
+            <button class="toggle-btn" onclick="toggleDetails(10)">10. Pengembalian Kelebihan Penerimaan dari Tahun-Tahun Sebelumnya</button>
+            <div class="details" id="details-10">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Surat permohonan SKPD.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Surat keputusan Kepala SKPD terkait untuk pengembalian kelebihan pembayaran pajak daerah
+                            dan retribusi daerah sampai dengan 50 juta.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Surat Keputusan Bupati untuk pengembalian kelebihan pembayaran pajak daerah dan retribusi daerah di atas 50 juta.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4. Fotokopi SP2D.
+                    </li>
+                </ul>
+                <textarea id="notes-10" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(10)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-11">
+            <button class="toggle-btn" onclick="toggleDetails(11)">11. Barang Habis Pakai/Tidak Habis Pakai/Bekas
+                Dipakai/Jasa Lainnya/Konstruksi/Mesin dan Peralatan/Mebel dan Perlengkapan dan Aset Tetap
+                Lainnya</button>
+            <div class="details" id="details-11">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Nota.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Kuitansi
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Berita acara penerimaan/tanda terima barang.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4. Jaminan pemeliharaan (jika ada).
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        5. Surat pesanan dan bukti pembayaran (nota atau kuitansi atau bukti transfer atau SP2D).
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        6. Fotokopi SP2D.
+                    </li>
+                </ul>
+                <textarea id="notes-11" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(11)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-12">
+            <button class="toggle-btn" onclick="toggleDetails(12)">12. Jasa Konsultansi</button>
+            <div class="details" id="details-12">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Surat perintah kerja.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Berita acara pemeriksaan/penerimaan.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Fotokopi SP2D.
+                    </li>
+                </ul>
+                <textarea id="notes-12" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(12)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-13">
+            <button class="toggle-btn" onclick="toggleDetails(13)">13. Sewa</button>
+            <div class="details" id="details-13">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Nota.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Kuitansi.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Surat pesanan dan bukti pembayaran (nota atau kuitansi atau bukti transfer atau SP2D).
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4. Fotokopi SP2D.
+                    </li>
+                </ul>
+                <textarea id="notes-13" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(13)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-14">
+            <button class="toggle-btn" onclick="toggleDetails(14)">14. Bahan Bakar Minyak</button>
+            <div class="details" id="details-14">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Bukti pembelian dari SPBU.
+                    </li>
+                </ul>
+                <textarea id="notes-14" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(14)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-15">
+            <button class="toggle-btn" onclick="toggleDetails(15)">15. Makan Minum Rapat</button>
+            <div class="details" id="details-15">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Bukti pembelian: 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Nota
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Kuitansi
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Fotokopi SP2D
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Undangan.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Daftar hadir rapat.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4. Notulen rapat.
+                    </li>
+                </ul>
+                <textarea id="notes-15" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(15)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-16">
+            <button class="toggle-btn" onclick="toggleDetails(16)">16. Makan Minum Lembur</button>
+            <div class="details" id="details-16">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Bukti pembelian: 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Nota
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Kuitansi
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Surat pesanan dan bukti pembayaran (nota atau kuitansi atau bukti transfer atau SP2D).
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                       - Fotokopi SP2D.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2) Daftar hadir lembur
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3) Surat tugas lembur.
+                    </li>
+                </ul>
+                <textarea id="notes-16" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(16)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-17">
+            <button class="toggle-btn" onclick="toggleDetails(17)">17. Makan minum tamu </button>
+            <div class="details" id="details-17">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Bukti pembelian: 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Nota
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Kuitansi
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Surat pesanan dan bukti pembayaran (nota atau kuitansi atau bukti transfer atau SP2D).
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                       - Fotokopi SP2D.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2) Daftar hadir
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3) Surat tugas/pemberitahuan kunjungan (kecuali tamu Bupati/Wakil Bupati)
+                    </li>
+                </ul>
+                <textarea id="notes-17" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(17)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-18">
+            <button class="toggle-btn" onclick="toggleDetails(18)">18. Makan Minum Peninjauan</button>
+            <div class="details" id="details-18">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Bukti pembelian: 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Nota
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Kuitansi
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        - Surat pesanan dan bukti pembayaran (nota atau kuitansi atau bukti transfer atau SP2D).
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                       - Fotokopi SP2D.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2) Daftar hadir
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3) Surat tugas/pemberitahuan kunjungan (kecuali tamu Bupati/Wakil Bupati)
+                    </li>
+                </ul>
+                <textarea id="notes-18" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(18)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-19">
+            <button class="toggle-btn" onclick="toggleDetails(19)">19. Bantuan Transport untuk Peserta</button>
+            <div class="details" id="details-19">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1) Daftar Penerimaan/Bukti Transfer
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2) Daftar Hadir Peserta/Bukti Kehadiran
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3) Undangan
+                    </li>
+                </ul>
+                <textarea id="notes-19" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(19)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-20">
+            <button class="toggle-btn" onclick="toggleDetails(20)">20.Perjalanan Dinas Dalam Daerah (Dalam
+                Provinsi) Bagi Bupati, Aparatur Sipil Negara, dan Non Aparatur Sipil Negara</button>
+            <div class="details" id="details-20">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1) Surat Perintah Tugas Ditandatangani oleh: 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        a. Kepala Daerah dan Kepala Perangkat Daerah ditandatangani oleh Kepala Daerah;
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        b. Pejabat Eselon III ke bawah atau yang disetarakan ditandatangani oleh Kepala Perangkat
+                        Daerah.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2) Surat perintah perjalanan dinas ditandatangani oleh PA/KPA
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3)Surat perintah perjalanan dinas dibubuhi cap dan tandatangan dari pejabat yang dituju
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4) satu (1) surat perintah perjalanan dinas berlaku untuk 1 (satu) orang
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        5) Surat perintah tugas dan surat perintah perjalanan dinas dalam kabupaten yang dilaksanakan oleh panewu dapat ditandatangani oleh panewu selaku PA
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        6) Laporan hasil perjalanan dinas dengan melampirkan dokumentasi/foto kegiatanbr 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        7) Bukti penerimaan uang/bukti transfer perjalanan dinas.
+                    </li>
+                </ul>
+                <textarea id="notes-20" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(20)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-21">
+            <button class="toggle-btn" onclick="toggleDetails(21)">21. Perjalanan Dinas Dalam Daerah (Dalam Provinsi) Bagi Pimpinan/Anggota DPRD</button>
+            <div class="details" id="details-21">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Surat perintah tugas untuk Pimpinan/Anggota DPRD ditandatangani oleh Ketua DPRD
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Surat perintah perjalanan dinas ditandatangani oleh PA/KPA 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Surat perintah perjalanan dinas dibubuhi cap dan tandatangan dari pejabat yang dituju 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4. satu (1) surat perintah perjalanan dinas berlaku untuk 1 (satu) orang <
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        5. Laporan hasil perjalanan dinas dengan melampirkan dokumentasi/foto kegiatan
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        6. Pakta Integritas
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        7. Kuitansi tanda terima pembayaran biaya perjalanan dinas lumpsum
+                    </li>
+                </ul>
+                <textarea id="notes-21" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(21)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-22">
+            <button class="toggle-btn" onclick="toggleDetails(22)">22. Perjalanan Dinas Paket Meeting Dalam/Luar Kota</button>
+            <div class="details" id="details-22">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Nota
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Kuitansi
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Fotokopi SP2D 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4. Daftar Penerimaan/Bukti Transfer
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        5. Undangan 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        6. Daftar Hadir Rapat
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        7. Notulen Rapat
+                    </li>
+                </ul>
+                <textarea id="notes-22" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(22)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-23">
+            <button class="toggle-btn" onclick="toggleDetails(23)">23. Perjalanan Dinas Dalam Negeri (Luar Provinsi) bagi Bupati, Aparatur Sipil Negara dan Non Aparatur Sipil Negara</button>
+            <div class="details" id="details-23">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Surat perintah tugas ditandatangani oleh:
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        a. Kepala Daerah dan Kepala Perangkat Daerah ditandatangani oleh Kepala Daerah;
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        b. Pejabat Eselon III ke bawah atau yang disetarakan ditandatangani oleh Kepala Perangkat
+                        Daerah.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Surat perintah perjalanan dinas ditandatangani oleh PA/KPA 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Apabila tempat yang dituju tidak mempunyai cap, maka surat perintah perjalanan dinas diketahui pemerintah tempat tujuan 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4. satu (1) surat perintah perjalanan dinas berlaku untuk 1 (satu) orang
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        5. Laporan hasil perjalanan dinas dengan melampirkan dokumentasi/foto kegiatan
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        6. Tiket perjalanan dinas. Jika dengan pesawat atau kereta api, dilampiri boarding pass
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        7. Bukti Pembayaran (Bill) Hotel
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        8. Print Out Uang Taksi/Bukti Pembayaran yang Kompeten 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        9. Bukti Penerimaan Uang/Bukti Transfer Perjalanan Dinas
+                    </li>
+                </ul>
+                <textarea id="notes-23" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(23)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-24">
+            <button class="toggle-btn" onclick="toggleDetails(24)">24. Perjalanan Dinas Dalam Negeri (Luar Provinsi) bagi Pimpinan/Anggota DPRD</button>
+            <div class="details" id="details-24">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Surat perintah tugas untuk Pimpinan dan Anggota DPRD ditandatangani oleh Ketua DPRD.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Surat perintah perjalanan di nas ditandatangani oleh PA/KPA
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Apabila tempat yang dituju tidak mempunyai cap, maka surat perintah perjalanan di nas diketahui pemerintah tempat tujuan
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4. satu (1) surat perintah perjalanan dinas berlaku untuk 1 (satu) orang
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        5. Laporan hasil perjalanan dinas dengan melampirkan dokumentasi/foto kegiatan
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        6. Pakta Integritas
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        7. Kuitansi Tanda Terima Pembayaran Biaya Perjalanan Dinas Lumpsum
+                    </li>
+                </ul>
+                <textarea id="notes-24" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(24)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-25">
+            <button class="toggle-btn" onclick="toggleDetails(25)">25. Perjalanan Dinas Luar Negeri</button>
+            <div class="details" id="details-25">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1) Surat Perintah Tugas Ditandatangani oleh: 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        a. Kepala Daerah dan Kepala Perangkat Daerah ditandatangani oleh Kepala Daerah;
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        b) Pimpinan dan Anggota DPRD, ditandatangani oleh Ketua DPRD;
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        c) Pejabat Eselon III ke bawah atau yang disetarakan, ditandatangani oleh Kepala Perangkat
+                            Daerah.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2) Surat perintah perjalanan dinas ditandatangani oleh PA/KPA
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3)Surat perintah perjalanan dinas dibubuhi cap dan tandatangan dari pejabat yang dituju
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        4) satu (1) surat perintah perjalanan dinas berlaku untuk 1 (satu) orang
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        5. Laporan hasil perjalanan dinas dengan melampirkan dokumentasi/foto kegiatan
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        6. Tiket Perjalanan dan Boarding Pass
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        7. Bukti Pembayaran Biaya Transportasi
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        8. Bukti pembayaran pengurusan dokumen yang dipersyaratkan dalam rangka perjalanan dinas
+                            luar negeri
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        9. Bukti Penerimaan Uang/Bukti Transfer Perjalanan Dinas
+                    </li>
+                </ul>
+                <textarea id="notes-25" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(25)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-26">
+            <button class="toggle-btn" onclick="toggleDetails(26)">26. Barang Hadiah (Belanja Barang untuk
+                Dijual/Diserahkan kepada Masyarakat)</button>
+            <div class="details" id="details-26">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Bukti Pembelian:
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        a) Nota
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        b) Kuitansi Jika Nilai sampai dengan Rp50 juta
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        c) Kuitansi Jika Nilai di atas Rp50 juta sampai dengan Rp200 juta.
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        d) Surat Perintah Kerja
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        e) Surat Pesanan dan Bukti Pembayaran (nota atau kuitansi atau bukti transfer atau SP2D) 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        f) Fotokopi SP2D
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Bukti Penyerahan kepada Pemenang
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Surat Penetapan Pemenang
+                    </li>
+                </ul>
+                <textarea id="notes-26" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(26)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-27">
+            <button class="toggle-btn" onclick="toggleDetails(27)">27. Belanja Uang yang Diberikan kepada Pihak
+            Ketiga/Pihak Lain/Masyarakat</button>
+            <div class="details" id="details-27">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Daftar Penerimaan/Bukti Transfer 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Bukti Penyerahan kepada Pemenang/Penerima
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Surat Penetapan Pemenang/Penerima
+                    </li>
+                </ul>
+                <textarea id="notes-27" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(27)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-28">
+            <button class="toggle-btn" onclick="toggleDetails(28)">28. Pengembangan Sumber Daya Manusia:</button>
+            <div class="details" id="details-28">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        a. Tugas belajar
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        b. Kursus/diklat / bimbingan teknis dan sejenisnya 
+                            Untuk pengiriman: 
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1) Surat tugas;
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2) Bukti pembayaran yang diotorisasi bank/ penyelenggara.
+                        Untuk penyelenggaraan: Daftar peserta
+                    </li>
+                </ul>
+                <textarea id="notes-28" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(28)">Cetak</button>
+            </div>
+        </div>
+        
+        <div class="section" id="section-29">
+            <button class="toggle-btn" onclick="toggleDetails(29)">29. Belanja Tenaga Ahli/Instruktur/Narasumber/Akademisi</button>
+            <div class="details" id="details-29">
+                <ul>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Daftar Penerimaan/Bukti Transfer
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Kontrak atau Permintaan Tenaga Ahli/Instruktur/Narasumber/Akademisi dari SKPD
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        3. Daftar Hadir/Syarat Sesuai Tata Cara Pembayaran yang Diatur dalam Kontrak
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        1. Daftar Penerimaan Dapat Diganti dengan Bukti Transfer
+                    </li>
+                    <li class="small-text" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        2. Daftar Hadir Dapat Diganti dengan Tangkapan Layar (Capture) Pelaksanaan Webinar
+                    </li>
+                </ul>
+                <textarea id="notes-29" class="notes-input" rows="3" placeholder="Masukkan catatan di sini..."></textarea>
+                <button class="print-btn" onclick="printSection(29)">Cetak</button>
+            </div>
+        </div>
+        </div>        
+        <div class="footer1">
+            <p>&copy; 2024 Bukti Dukung SPJ Keuangan BPBD Sleman. Semua hak dilindungi.</p>
+        </div>
+    </div>
+</body>
+</html>
